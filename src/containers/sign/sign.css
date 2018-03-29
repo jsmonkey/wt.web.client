@@ -1,0 +1,7 @@
+.sign {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    flex: 1 1 auto;
+}

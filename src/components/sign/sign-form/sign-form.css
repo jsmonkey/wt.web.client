@@ -1,0 +1,20 @@
+.sign-form {
+    background-color: cornflowerblue;
+
+    width: 200px;
+    padding: 5px;
+  
+    align-self: center;
+  
+    display: flex;
+    flex-flow: column;
+  
+  
+    &__input {
+      margin-bottom: 5px;
+    }
+
+    &__button {
+
+    }
+}

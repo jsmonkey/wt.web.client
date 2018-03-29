@@ -1,0 +1,17 @@
+.sign-header-tab {
+    
+    background-color: cornflowerblue;
+
+    display: flex;
+    justify-content: center;
+
+    flex: 1 1 auto;
+
+    padding: 5px;
+
+    &__title {
+        text-decoration: none;
+    }
+    
+}
+
