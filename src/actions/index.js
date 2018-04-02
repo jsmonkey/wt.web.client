@@ -1,1 +1,3 @@
-export { default as UserActions } from './user';
+export { default as AuthActions } from './auth';
+export { default as FormActions } from './form';
+

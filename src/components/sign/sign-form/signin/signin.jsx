@@ -1,6 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+import Form from '../../../../containers/form/form';
+import FormField from '../../../../containers/form/form-field/form-field';
+
 import FormButton from '../../../form-button/form-button';
 import FormInput from '../../../form-input/form-input';
 
@@ -8,29 +11,25 @@ import { Validators } from '../../../../utils';
 
 import '../sign-form.css';
 
-@reduxForm({
-  form: 'signin',
-})
 export default class SignIn extends React.Component {
   render() {
     return (
-      <form className="sign-form">
-        <Field
-          name="login"
-          placeholder="Login"
-          component={FormInput}
-          type="text"
-          className="sign-form__input"
-        />
-        <Field
-          name="password"
-          placeholder="Password"
-          component={FormInput}
-          type="password"
-          className="sign-form__input"
-        />
-        <FormButton type="submit" className="sign-form_button" title="SignIn" />
-      </form>
+      <Form name="signin" className="sign-form">
+        <FormField name="login" converter={onChange => ({ target: { value } }) => onChange(value)}>
+          <input
+            type="text"
+            className="sign-form__input"
+            placeholder="Login"
+          />
+        </FormField>
+        <FormField name="password" converter={onChange => ({ target: { value } }) => onChange(value)}>
+          <input
+            type="password"
+            className="sign-form__input"
+            placeholder="Password"
+          />
+        </FormField>
+      </Form>
     );
   }
 }

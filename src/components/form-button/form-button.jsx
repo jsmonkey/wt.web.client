@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { Form } from '../../constants';
 
-export default class Button extends React.PureComponent {
+export default class FormButton extends React.PureComponent {
     static propTypes = {
       className: PropTypes.string,
       title: PropTypes.string,
