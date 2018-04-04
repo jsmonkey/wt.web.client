@@ -63,9 +63,10 @@ export default class FormField extends React.Component {
     @autobind
     onChange(value) {
       const {
-        name, formName, FormActions: { changeFieldValue },
+        name, formName, FormActions: { changeFieldValue, validateField },
       } = this.props;
       changeFieldValue(formName, name, value);
+      validateField(formName, name);
     }
 
     renderErrors() {

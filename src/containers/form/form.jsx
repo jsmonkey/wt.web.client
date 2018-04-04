@@ -24,6 +24,8 @@ function mapDispatchToProps(dispatch) {
 export default class Form extends React.Component {
     static propTypes = {
       name: PropTypes.string,
+      action: PropTypes.string,
+      forward: PropTypes.string,
       className: PropTypes.string,
       FormActions: PropTypes.object,
       children: PropTypes.oneOfType([
@@ -34,18 +36,27 @@ export default class Form extends React.Component {
 
     static defaultProps = {
       name: '',
+      action: '',
+      forward: '',
       className: '',
       FormActions: {},
       children: null,
     };
 
     componentWillMount() {
-      const { FormActions: { initForm }, name } = this.props;
-      initForm(name);
+      const {
+        FormActions: { initForm }, name, action, forward,
+      } = this.props;
+      initForm(name, action, forward);
     }
 
-    onSubmit() {
-
+    @autobind
+    onSubmit(event) {
+      const {
+        FormActions: { submitForm }, name, action, forward,
+      } = this.props;
+      event.preventDefault();
+      submitForm(name, action, forward);
     }
 
     @autobind
@@ -60,7 +71,7 @@ export default class Form extends React.Component {
       const { className, children } = this.props;
       const classNames = classnames('form', className);
       return (
-        <form className={classNames} >
+        <form onSubmit={this.onSubmit} className={classNames} >
           {React.Children.map(children, this.renderChild)}
         </form>
       );

@@ -1,9 +1,9 @@
 import { ActionTypes } from '../constants';
 
 export default {
-  initForm: formName => ({
+  initForm: (formName, action, forward) => ({
     type: ActionTypes.INIT_FORM,
-    payload: { formName },
+    payload: { formName, action, forward },
   }),
   initField: (formName, fieldName, validators, asyncValidators) => ({
     type: ActionTypes.INIT_FIELD,
@@ -15,11 +15,25 @@ export default {
     type: ActionTypes.CHANGE_FIELD_VALUE,
     payload: { formName, fieldName, value },
   }),
-  commitChangedValue: (formName, fieldName, value, errors) => ({
-    type: ActionTypes.COMMIT_CHANGED_VALUE,
-    payload: {
-      formName, fieldName, value, errors,
-    },
+  validateField: (formName, fieldName) => ({
+    type: ActionTypes.VALIDATE_FIELD,
+    payload: { formName, fieldName },
+  }),
+  setFieldValidationErrors: (formName, fieldName, errors) => ({
+    type: ActionTypes.SET_FIELD_VALIDATION_ERRORS,
+    payload: { formName, fieldName, errors },
+  }),
+  validateForm: formName => ({
+    type: ActionTypes.VALIDATE_FORM,
+    payload: { formName },
+  }),
+  setFormValidationErrors: (formName, errors) => ({
+    type: ActionTypes.SET_FROM_VALIDATION_ERRORS,
+    payload: { formName, errors },
+  }),
+  submitForm: (formName, action, forward) => ({
+    type: ActionTypes.SUBMIT_FORM,
+    payload: { formName, action, forward },
   }),
 };
 
